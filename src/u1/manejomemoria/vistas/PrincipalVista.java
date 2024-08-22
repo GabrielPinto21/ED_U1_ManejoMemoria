@@ -15,9 +15,9 @@ import javax.swing.JTextField;
  * @author Boris Perez
  */
 public class PrincipalVista extends javax.swing.JFrame {
-
-    private PrincipalControlador controlador;
     
+    private PrincipalControlador controlador;
+
     /**
      * Creates new form NewJFrame
      */
@@ -26,7 +26,7 @@ public class PrincipalVista extends javax.swing.JFrame {
         controlador = new PrincipalControlador(this);
         
     }
-
+    
     public JComboBox<String> getCmbImprimirID() {
         return cmbImprimirID;
     }
@@ -34,19 +34,19 @@ public class PrincipalVista extends javax.swing.JFrame {
     public JComboBox<String> getCmbActualizarID() {
         return cmbActualizarID;
     }
-
+    
     public JTextField getTxtActualizarEdad() {
         return txtActualizarEdad;
     }
-
+    
     public void setTxtActualizarEdad(JTextField txtActualizarEdad) {
         this.txtActualizarEdad = txtActualizarEdad;
     }
-
+    
     public JTextField getTxtActualizarNombre() {
         return txtActualizarNombre;
     }
-
+    
     public void setTxtActualizarNombre(JTextField txtActualizarNombre) {
         this.txtActualizarNombre = txtActualizarNombre;
     }
@@ -58,7 +58,15 @@ public class PrincipalVista extends javax.swing.JFrame {
     public JComboBox<String> getCmbIgualarID() {
         return cmbIgualarID;
     }
-
+    
+    public JComboBox<String> getCmbId1Igual() {
+        return cmbId1Igual;
+    }
+    
+    public JComboBox<String> getCmbId2Igual() {
+        return cmbId2Igual;
+    }
+    
     public void setCmbImprimirID(JComboBox<String> cmbImprimirID) {
         this.cmbImprimirID = cmbImprimirID;
     }
@@ -110,6 +118,13 @@ public class PrincipalVista extends javax.swing.JFrame {
         btnIgualar = new javax.swing.JButton();
         cmbIgualarID = new javax.swing.JComboBox<>();
         lblIgualacion = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        cmbId1Igual = new javax.swing.JComboBox<>();
+        cmbId2Igual = new javax.swing.JComboBox<>();
+        btnValidar = new javax.swing.JButton();
+        txtMensajeIguales = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -254,6 +269,12 @@ public class PrincipalVista extends javax.swing.JFrame {
         btnClonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClonarActionPerformed(evt);
+            }
+        });
+
+        cmbClonarIDSource.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClonarIDSourceActionPerformed(evt);
             }
         });
 
@@ -416,6 +437,61 @@ public class PrincipalVista extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Son iguales"));
+
+        jLabel13.setText("ID (source)");
+
+        jLabel14.setText("ID (source)");
+
+        btnValidar.setText("Validar");
+        btnValidar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValidarActionPerformed(evt);
+            }
+        });
+
+        txtMensajeIguales.setBackground(new java.awt.Color(187, 187, 187));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMensajeIguales)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbId1Igual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbId2Igual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnValidar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbId1Igual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(cmbId2Igual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtMensajeIguales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -430,8 +506,10 @@ public class PrincipalVista extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,10 +519,11 @@ public class PrincipalVista extends javax.swing.JFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -462,11 +541,11 @@ public class PrincipalVista extends javax.swing.JFrame {
     public JTextField getTxtCargarNombre() {
         return txtCargarNombre;
     }
-
+    
     public void setTxtCrearEdad(JTextField txtCrearEdad) {
         this.txtCrearEdad = txtCrearEdad;
     }
-
+    
     public JTextField getTxtCrearID() {
         return txtCrearID;
     }
@@ -474,15 +553,19 @@ public class PrincipalVista extends javax.swing.JFrame {
     public JTextField getTxtClonarIDDest() {
         return txtClonarIDDest;
     }
-
+    
     public void setTxtCrearID(JTextField txtCrearID) {
         this.txtCrearID = txtCrearID;
     }
-
+    
+    public void setTxtMensajeIguales(String txtMensajeIguales) {
+        this.txtMensajeIguales.setText(txtMensajeIguales);
+    }
+    
     public JTextField getTxtCrearNombre() {
         return txtCrearNombre;
     }
-
+    
     public void setTxtCrearNombre(JTextField txtCrearNombre) {
         this.txtCrearNombre = txtCrearNombre;
     }
@@ -519,6 +602,14 @@ public class PrincipalVista extends javax.swing.JFrame {
         controlador.igualarObjeto();
     }//GEN-LAST:event_btnIgualarActionPerformed
 
+    private void cmbClonarIDSourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClonarIDSourceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbClonarIDSourceActionPerformed
+
+    private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
+        controlador.validarIgualdad();
+    }//GEN-LAST:event_btnValidarActionPerformed
+    
     public JLabel getLblIgualacion() {
         return lblIgualacion;
     }
@@ -568,14 +659,19 @@ public class PrincipalVista extends javax.swing.JFrame {
     private javax.swing.JButton btnIgualar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnNuevoClonar;
+    private javax.swing.JButton btnValidar;
     private javax.swing.JComboBox<String> cmbActualizarID;
     private javax.swing.JComboBox<String> cmbClonarIDSource;
+    private javax.swing.JComboBox<String> cmbId1Igual;
+    private javax.swing.JComboBox<String> cmbId2Igual;
     private javax.swing.JComboBox<String> cmbIgualarID;
     private javax.swing.JComboBox<String> cmbImprimirID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -589,6 +685,7 @@ public class PrincipalVista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblIgualacion;
     private javax.swing.JTextField txtActualizarEdad;
     private javax.swing.JTextField txtActualizarNombre;
@@ -598,5 +695,6 @@ public class PrincipalVista extends javax.swing.JFrame {
     private javax.swing.JTextField txtCrearEdad;
     private javax.swing.JTextField txtCrearID;
     private javax.swing.JTextField txtCrearNombre;
+    private javax.swing.JTextField txtMensajeIguales;
     // End of variables declaration//GEN-END:variables
 }

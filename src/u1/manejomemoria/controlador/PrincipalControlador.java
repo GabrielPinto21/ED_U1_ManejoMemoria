@@ -17,135 +17,150 @@ import javax.swing.JFrame;
  * @author Boris Perez
  */
 public class PrincipalControlador {
-    
+
     private Negocio negocio;
     private PrincipalVista frame;
-    
-    public PrincipalControlador(PrincipalVista frame){
+
+    public PrincipalControlador(PrincipalVista frame) {
         negocio = new Negocio();
         this.frame = frame;
         cargaInicial();
     }
-    
-    private void cargaInicial(){
-       
+
+    private void cargaInicial() {
+
         System.out.println("Carga inicial");
-        
+
         String id = negocio.crearPersona("Boris", 15);
         actualizarCombos(id);
-        
+
         id = negocio.crearPersona("Laura", 20);
         actualizarCombos(id);
-        
+
         id = negocio.crearPersona("Pedro", 25);
         actualizarCombos(id);
-        
+
     }
-    
-    public void crearObjeto(){
-        
+
+    public void crearObjeto() {
+
         int edad = Integer.parseInt(frame.getTxtCrearEdad().getText());
-        
+
         String id = negocio.crearPersona(frame.getTxtCrearNombre().getText(), edad);
         frame.getTxtCrearID().setText(id);
-        
-        actualizarCombos(id);   
-        
+
+        actualizarCombos(id);
+
     }
-    
-    public void limpiarCrearObjeto(){
+
+    public void limpiarCrearObjeto() {
         frame.getTxtCrearNombre().setText("");
         frame.getTxtCrearEdad().setText("");
         frame.getTxtCrearID().setText("");
     }
-    
-    public void limpiarClonarObjeto(){
+
+    public void limpiarClonarObjeto() {
         frame.getTxtClonarIDDest().setText("");
     }
-    
-    public void cargarObjeto(){
-        
+
+    public void cargarObjeto() {
+
         String sIndice = frame.getCmbImprimirID().getSelectedItem().toString();
         int indice = Integer.parseInt(sIndice);
-        
+
         Persona p = negocio.cargarPersonaIndice(indice);
-        
-        if(p!=null){
+
+        if (p != null) {
             frame.getTxtCargarNombre().setText(p.getNombre());
-            frame.getTxtCargarEdad().setText(""+p.getEdad()); // Se concatena para pasarlo a String
-        }else
+            frame.getTxtCargarEdad().setText("" + p.getEdad()); // Se concatena para pasarlo a String
+        } else {
             System.err.println("El objeto es null");
-             
+        }
+
     }
-    
-    
-    
-    public void cargarObjetoActualizar(){
-        
+
+    public void cargarObjetoActualizar() {
+
         Persona p = negocio.cargarPersona(frame.getCmbActualizarID().getSelectedItem().toString());
-        
-        if(p!=null){
+
+        if (p != null) {
             frame.getTxtActualizarNombre().setText(p.getNombre());
-            frame.getTxtActualizarEdad().setText(""+p.getEdad()); // Se concatena para pasarlo a String
-        }else
+            frame.getTxtActualizarEdad().setText("" + p.getEdad()); // Se concatena para pasarlo a String
+        } else {
             System.err.println("El objeto es null");
-             
+        }
+
     }
-    
-    public void actualizar(){
-        int edad = Integer.parseInt(frame.getTxtActualizarEdad().getText());     
+
+    public void actualizar() {
+        int edad = Integer.parseInt(frame.getTxtActualizarEdad().getText());
         String id = frame.getCmbActualizarID().getSelectedItem().toString();
         negocio.actualizarPersona(id, frame.getTxtActualizarNombre().getText(), edad);
-        
+
         frame.getTxtActualizarEdad().setText("");
         frame.getTxtActualizarNombre().setText("");
     }
-    
-    public void clonarObjeto(){
-        
+
+    public void clonarObjeto() {
+
         Persona p = negocio.cargarPersona(frame.getCmbClonarIDSource().getSelectedItem().toString());
-        
-        if(p!=null){
-            
+
+        if (p != null) {
+
             String id = negocio.crearPersona(p.getNombre(), p.getEdad());
             frame.getTxtClonarIDDest().setText(id);
-            
-            actualizarCombos(id);    
-            
-        }else
+
+            actualizarCombos(id);
+
+        } else {
             System.err.println("El objeto es null");
-             
+        }
+
     }
-    
-    private void actualizarCombos(String id){
-        
+
+    private void actualizarCombos(String id) {
+
         System.out.println("Actualizando combos");
-        
-        DefaultComboBoxModel<String> modelo2 = (DefaultComboBoxModel<String>)frame.getCmbClonarIDSource().getModel();
+
+        DefaultComboBoxModel<String> modelo2 = (DefaultComboBoxModel<String>) frame.getCmbClonarIDSource().getModel();
         modelo2.addElement(id);
-        
-        DefaultComboBoxModel<String> modelo3 = (DefaultComboBoxModel<String>)frame.getCmbActualizarID().getModel();
+
+        DefaultComboBoxModel<String> modelo3 = (DefaultComboBoxModel<String>) frame.getCmbActualizarID().getModel();
         modelo3.addElement(id);
-        
-        DefaultComboBoxModel<String> modelo4 = (DefaultComboBoxModel<String>)frame.getCmbIgualarID().getModel();
-        modelo4.addElement(id);        
-        
+
+        DefaultComboBoxModel<String> modelo4 = (DefaultComboBoxModel<String>) frame.getCmbIgualarID().getModel();
+        modelo4.addElement(id);
+
+        DefaultComboBoxModel<String> modelo5 = (DefaultComboBoxModel<String>) frame.getCmbId1Igual().getModel();
+        modelo5.addElement(id);
+
+        DefaultComboBoxModel<String> modelo6 = (DefaultComboBoxModel<String>) frame.getCmbId2Igual().getModel();
+        modelo6.addElement(id);
+
         int totalPersonas = negocio.obtenerCantidadPersonas();
-        if(totalPersonas>0){
-            DefaultComboBoxModel<String> modelo1 = (DefaultComboBoxModel<String>)frame.getCmbImprimirID().getModel();
+        if (totalPersonas > 0) {
+            DefaultComboBoxModel<String> modelo1 = (DefaultComboBoxModel<String>) frame.getCmbImprimirID().getModel();
             modelo1.removeAllElements();
             for (int i = 0; i < totalPersonas; i++) {
-                modelo1.addElement(""+i);
+                modelo1.addElement("" + i);
             }
         }
-        
+
     }
 
     public void igualarObjeto() {
         String id = frame.getCmbIgualarID().getSelectedItem().toString();
         negocio.igualarPersona(id);
         actualizarCombos(id);
-       
+
     }
-    
+
+    public void validarIgualdad() {
+        if (frame.getCmbId1Igual().getSelectedItem().equals(frame.getCmbId2Igual().getSelectedItem())) {
+            frame.setTxtMensajeIguales("Son Iguales :)");
+        } else {
+            frame.setTxtMensajeIguales("No son Iguales :(");
+        }
+    }
+
 }
